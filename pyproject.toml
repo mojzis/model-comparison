@@ -1,8 +1,8 @@
 [project]
-name = "python-template"
+name = "aa-chart"
 version = "0.1.0"
-description = "A Python project template"
-requires-python = ">=3.11"
+description = "Daily intelligence-vs-cost chart for Claude and OpenAI models, from Artificial Analysis"
+requires-python = ">=3.12"
 
 [build-system]
 requires = ["hatchling"]
@@ -30,7 +30,7 @@ dev = [
 
 [tool.ruff]
 line-length = 88
-target-version = "py311"
+target-version = "py312"
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "UP", "B", "S", "SIM", "C4", "DTZ", "T20", "PTH", "ERA", "PL", "TRY", "RUF"]
