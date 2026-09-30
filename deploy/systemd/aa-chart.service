@@ -1,0 +1,18 @@
+# systemd *user* service: runs the daily export once. Triggered by aa-chart.timer.
+# Install: see README.md ("Running on a VPS with systemd").
+[Unit]
+Description=Daily Artificial Analysis intelligence-vs-cost chart export
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+# Adjust if the repo lives elsewhere.
+WorkingDirectory=%h/model-comparison
+# One line: AA_API_KEY=... (chmod 600). Never commit this file.
+EnvironmentFile=%h/.config/aa-chart.env
+# systemd user units get a minimal PATH; uv is usually in ~/.local/bin.
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=%h/model-comparison/scripts/run_daily.sh
+# Optional: publish out/ to a web root after a successful run.
+# ExecStartPost=/usr/bin/rsync -a --delete %h/model-comparison/out/ /var/www/aa-chart/
