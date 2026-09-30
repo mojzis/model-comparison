@@ -1,9 +1,9 @@
 # Intelligence vs cost: Claude and OpenAI models
 
-A daily chart of Artificial Analysis (AA) Intelligence Index scores against cost per
+A chart of Artificial Analysis (AA) Intelligence Index scores against cost per
 index task. Each Claude and OpenAI model family is drawn as one curve through its
 reasoning-effort levels. The source is a [marimo](https://marimo.io) notebook
-(`aa_chart.py`), exported once a day to static HTML.
+(`aa_chart.py`), exported to static HTML.
 
 > Data: [Artificial Analysis](https://artificialanalysis.ai) free API. The API
 > terms require attribution on anything published, so every page and every
@@ -113,7 +113,9 @@ add a `[vendors.Google]` table with a palette and families.
 
 ### Option 1: GitHub Actions + GitHub Pages
 
-`.github/workflows/daily.yml` runs at 06:17 UTC and on manual dispatch. It:
+`.github/workflows/pages.yml` runs on a push to `main` that touches `config.toml`
+(the model list), the notebook, `src/aa_lib/`, `scripts/run_daily.sh` or
+`uv.lock`, and on manual dispatch (use that to pick up fresh AA scores). It:
 
 1. runs the script;
 2. commits `data/` and `out/` back to the repo;
@@ -125,7 +127,11 @@ To set it up:
 1. **Settings → Secrets and variables → Actions → New repository secret**:
    `AA_API_KEY`.
 2. **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-3. **Actions → Daily AA chart → Run workflow** to test it once.
+3. **Actions → Publish AA chart → Run workflow** to test it once.
+
+`.github/workflows/ci.yml` runs lint, typecheck, test smells, clones, a
+vulnerability scan and the tests on every PR and push to `main`. It never calls the
+AA API.
 
 ### Option 2: systemd user timer on a VPS
 
