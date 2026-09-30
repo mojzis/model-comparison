@@ -1,0 +1,10 @@
+[Unit]
+Description=Run aa-chart daily at 06:17 UTC
+
+[Timer]
+OnCalendar=*-*-* 06:17:00 UTC
+# Catch up after downtime: run at boot if the 06:17 slot was missed.
+Persistent=true
+
+[Install]
+WantedBy=timers.target

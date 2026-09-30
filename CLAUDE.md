@@ -1,4 +1,9 @@
-# Python Template
+# model-comparison
+
+Daily Artificial Analysis intelligence-vs-cost chart (see README.md). `aa_chart.py` is
+a marimo notebook; the logic lives in `src/aa_lib/` so it can be tested. Entry point:
+`scripts/run_daily.sh`. Never log or commit `AA_API_KEY`; the free API allows 100
+requests/day, so test with `AA_OFFLINE=1` or today's cached `data/raw` file.
 
 ## Commands
 

@@ -1,12 +1,21 @@
 [project]
-name = "python-template"
+name = "model-comparison"
 version = "0.1.0"
-description = "A Python project template"
-requires-python = ">=3.11"
+description = "Daily intelligence-vs-cost chart for Claude and OpenAI models (data: Artificial Analysis)"
+requires-python = ">=3.12"
+dependencies = [
+    "httpx",
+    "marimo",
+    "plotly",
+    "polars",
+]
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/aa_lib"]
 
 [dependency-groups]
 dev = [
@@ -30,13 +39,18 @@ dev = [
 
 [tool.ruff]
 line-length = 88
-target-version = "py311"
+target-version = "py312"
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "UP", "B", "S", "SIM", "C4", "DTZ", "T20", "PTH", "ERA", "PL", "TRY", "RUF"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = ["S101", "S105", "S106", "PLR2004"]
+# marimo cells: imports live in a cell, cell args are the DAG edges, and a bare
+# expression at the end of a cell is its displayed output.
+"aa_chart.py" = ["PLC0415", "PLR0913", "PLR0917", "B018"]
+# Plotly's documented idiom is dict(...) for nested figure properties.
+"src/aa_lib/figures.py" = ["C408"]
 
 [tool.ruff.format]
 
@@ -53,9 +67,12 @@ source = ["src"]
 show_missing = true
 
 [tool.vulture]
-paths = ["src"]
+paths = ["src", "aa_chart.py"]
+# marimo: every cell is a function named `_`.
+ignore_names = ["_", "__generated_with"]
 
 [tool.deptry]
+known_first_party = ["aa_lib"]
 
 [tool.interrogate]
 fail_under = 0
@@ -112,7 +129,7 @@ cmd = "biston scan ."
 help = "Clone detection (biston)"
 
 [tool.poe.tasks.dead-code]
-cmd = "vulture src"
+cmd = "vulture"
 help = "Dead code detection"
 
 [tool.poe.tasks.unused-deps]
