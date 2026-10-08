@@ -11,7 +11,7 @@ out_dir = "out"    # chart.html is written here
 
 [chart]
 title = "Intelligence vs cost: Claude and OpenAI models"
-dashes = ["solid", "dash", "dot", "dashdot"]
+dashes = ["solid", "dash", "dot", "dashdot", "longdash"]
 
 # One table per vendor, keyed by AA's `model_creator.name`. Order here is the
 # left-to-right order in the ladder chart. `families` is the allowlist of current
@@ -19,8 +19,8 @@ dashes = ["solid", "dash", "dot", "dashdot"]
 # (the free API has no current/deprecated status field).
 [vendors.Anthropic]
 label = "Claude"
-palette = ["#3C3489", "#534AB7", "#7F77DD", "#AFA9EC"]
-families = ["Fable 5.1", "Opus 5.5", "Sonnet 5.5", "Haiku 4.5"]
+palette = ["#3C3489", "#534AB7", "#7F77DD", "#AFA9EC", "#8C88B4"]
+families = ["Fable 5.1", "Opus 5.5", "Sonnet 5.5", "Haiku 5.5", "Haiku 4.5"]
 
 [vendors.OpenAI]
 label = "OpenAI"

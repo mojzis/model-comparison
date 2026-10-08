@@ -28,7 +28,7 @@ def _row(tidy: pl.DataFrame, family: str, effort: str) -> dict:
 
 def test_normalize_keeps_every_entry_and_computes_blend(all_rows: pl.DataFrame) -> None:
     opus_max = all_rows.filter(pl.col("slug") == "claude-opus-5-5").row(0, named=True)
-    assert all_rows.height == 174
+    assert all_rows.height == 179
     assert opus_max["price_blended_3to1"] == pytest.approx((3 * 4 + 20) / 4)
     assert opus_max["index_version"] == "4.3"
     assert opus_max["released"] == date(2026, 9, 22)
