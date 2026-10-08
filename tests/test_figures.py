@@ -13,7 +13,7 @@ from aa_lib.figures import (
 )
 from aa_lib.page import chart_page
 
-N_FAMILIES = 9  # config allowlist, all present in the fixture
+N_FAMILIES = 8  # config allowlist, all present in the fixture
 N_EFFORTS = 6
 
 
@@ -127,10 +127,10 @@ def test_ladder_labels_switch_with_y(ladder: go.Figure) -> None:
 
 def test_ladder_vendor_order(ladder: go.Figure) -> None:
     ticks = list(ladder.layout.xaxis.ticktext)
-    assert ticks[:5] == ["Fable 5.1", "Opus 5.5", "Sonnet 5.5", "Haiku 5.5", "Haiku 4.5"]
-    assert ticks[5] == "GPT-6.1 Sol"
+    assert ticks[:4] == ["Fable 5.1", "Opus 5.5", "Sonnet 5.5", "Haiku 4.5"]
+    assert ticks[4] == "GPT-6.1 Sol"
     vals = list(ladder.layout.xaxis.tickvals)
-    assert vals[5] - vals[4] == 2  # gap between vendors
+    assert vals[4] - vals[3] == 2  # gap between vendors
 
 
 def test_shared_y_range(main: go.Figure, ladder: go.Figure) -> None:

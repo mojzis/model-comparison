@@ -1,0 +1,29 @@
+# Frozen test config, matched to fixtures/sample.json (fetched 2026-09-30).
+# Unit tests load this, not the repo's config.toml, so editing the live model
+# list never breaks them. Change it only together with the fixture.
+
+[api]
+url = "https://artificialanalysis.ai/api/v2/language/models/free"
+timeout_s = 30
+
+[paths]
+data_dir = "data"  # raw/ and tidy/ live under this
+out_dir = "out"    # chart.html is written here
+
+[chart]
+title = "Intelligence vs cost: Claude and OpenAI models"
+dashes = ["solid", "dash", "dot", "dashdot"]
+
+# One table per vendor, keyed by AA's `model_creator.name`. Order here is the
+# left-to-right order in the ladder chart. `families` is the allowlist of current
+# families, in legend order; leave it empty to keep every family of that vendor
+# (the free API has no current/deprecated status field).
+[vendors.Anthropic]
+label = "Claude"
+palette = ["#3C3489", "#534AB7", "#7F77DD", "#AFA9EC"]
+families = ["Fable 5.1", "Opus 5.5", "Sonnet 5.5", "Haiku 4.5"]
+
+[vendors.OpenAI]
+label = "OpenAI"
+palette = ["#085041", "#0F6E56", "#1D9E75", "#5DCAA5"]
+families = ["GPT-6.1 Sol", "GPT-6 Astra", "GPT-6 Luna", "GPT-5.6 Terra"]
