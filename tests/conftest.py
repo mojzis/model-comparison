@@ -12,11 +12,12 @@ from aa_lib.tidy import normalize, select_current
 ROOT = Path(__file__).resolve().parent.parent
 FIXTURE = ROOT / "tests" / "fixtures" / "sample.json"
 FIXTURE_DAY = date(2026, 9, 30)
+FIXTURE_CONFIG = ROOT / "tests" / "fixtures" / "config.toml"
 
 
 @pytest.fixture(scope="session")
 def cfg() -> Config:
-    return load_config(ROOT / "config.toml")
+    return load_config(FIXTURE_CONFIG)
 
 
 @pytest.fixture(scope="session")
