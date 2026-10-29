@@ -20,9 +20,9 @@ dashes = ["solid", "dash", "dot", "dashdot", "longdash"]
 [vendors.Anthropic]
 label = "Claude"
 palette = ["#3C3489", "#534AB7", "#7F77DD", "#AFA9EC", "#8C88B4"]
-families = ["Fable 5.1", "Opus 5.5", "Sonnet 5.5", "Haiku 5.5", "Haiku 4.5"]
+families = ["Fable 5.1", "Opus 5.5", "Sonnet 5.5", "Haiku 5.5"]
 
 [vendors.OpenAI]
 label = "OpenAI"
 palette = ["#085041", "#0F6E56", "#1D9E75", "#5DCAA5"]
-families = ["GPT-6.1 Sol", "GPT-6 Astra", "GPT-6 Luna", "GPT-5.6 Terra"]
+families = ["GPT-6.1 Sol", "GPT-6 Astra", "GPT-6 Luna", "GPT-6.1 Terra"]
