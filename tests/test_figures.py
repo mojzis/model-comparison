@@ -11,7 +11,7 @@ from aa_lib.figures import (
     main_figure,
     nudge_labels,
 )
-from aa_lib.page import chart_page
+from aa_lib.page import changes_link_html, changes_page, chart_page
 
 N_FAMILIES = 8  # config allowlist, all present in the fixture
 N_EFFORTS = 6
@@ -170,12 +170,35 @@ def page_html(main: go.Figure, ladder: go.Figure) -> str:
     [
         '<meta name="viewport"',
         "<title>Title</title>",
-        "added: X · max",
+        '<a href="changes.html">What changed since 2026-09-29 →</a> (1 item)',
         "Artificial Analysis",
     ],
 )
 def test_chart_page_contains(page_html: str, snippet: str) -> None:
     assert snippet in page_html
+
+
+def test_chart_page_links_changes_instead_of_listing(page_html: str) -> None:
+    assert "added: X · max" not in page_html
+
+
+def test_changes_page_lists_changes_and_links_back() -> None:
+    html = changes_page(
+        "Title",
+        fetched="2026-09-30",
+        version="4.3",
+        change_lines=["added: X · max", "Y · low: Intelligence 1 → 2"],
+        prev_label="2026-09-29",
+    )
+    assert "<li>added: X · max</li>" in html
+    assert "<li>Y · low: Intelligence 1 → 2</li>" in html
+    assert 'href="index.html"' in html
+    assert "Artificial Analysis" in html
+
+
+def test_changes_link_without_changes_has_no_link() -> None:
+    html = changes_link_html([], "2026-09-29")
+    assert html == '<p class="note">No changes since 2026-09-29.</p>'
 
 
 def test_chart_page_loads_plotly_once_from_cdn(page_html: str) -> None:

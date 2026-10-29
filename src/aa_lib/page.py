@@ -1,4 +1,5 @@
-"""The lightweight shareable page: both figures, plotly.js from the CDN, no marimo."""
+"""Static pages without marimo: chart.html (both figures, plotly.js from the CDN)
+and changes.html (the day-over-day change list)."""
 
 from html import escape
 from pathlib import Path
@@ -13,7 +14,7 @@ _SHELL = """<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{title}</title>
+<title>{page_title}</title>
 <style>
   /* Light only: the figures use Plotly's simple_white template (dark ink). */
   :root {{ color-scheme: light; --ink: #1d1d1f; --muted: #6e6e73; --bg: #ffffff; }}
@@ -25,6 +26,7 @@ _SHELL = """<!doctype html>
   .byline, .note {{ color: var(--muted); font-size: 0.9rem; margin: 0; }}
   .byline a {{ color: inherit; }}
   ul.changes {{ margin: 8px 0 0; padding-left: 20px; font-size: 0.9rem; }}
+  a.back {{ color: var(--muted); font-size: 0.9rem; }}
   .fig {{ width: 100%; overflow-x: auto; }}
 </style>
 </head>
@@ -32,9 +34,7 @@ _SHELL = """<!doctype html>
 <main>
 <h1>{title}</h1>
 <p class="byline">{byline}</p>
-<h2>What changed since {prev}</h2>
-{changes}
-{figures}
+{body}
 </main>
 </body>
 </html>
@@ -54,6 +54,42 @@ def changes_html(lines: list[str]) -> str:
         return '<p class="note">No changes.</p>'
     items = "".join(f"<li>{escape(line)}</li>" for line in lines)
     return f'<ul class="changes">{items}</ul>'
+
+
+CHANGES_PAGE = "changes.html"
+
+
+def changes_link_html(lines: list[str], prev_label: str) -> str:
+    """One line pointing to changes.html, instead of the full list."""
+    prev = escape(prev_label)
+    if not lines:
+        return f'<p class="note">No changes since {prev}.</p>'
+    n = len(lines)
+    return (
+        f'<p><a href="{CHANGES_PAGE}">What changed since {prev} →</a> '
+        f"({n} item{'s' if n != 1 else ''})</p>"
+    )
+
+
+def changes_page(
+    title: str,
+    *,
+    fetched: str,
+    version: str | None,
+    change_lines: list[str],
+    prev_label: str,
+) -> str:
+    """HTML for changes.html: the full change list, linking back to the charts."""
+    heading = f"What changed since {prev_label}"
+    return _SHELL.format(
+        title=escape(title),
+        page_title=escape(f"{heading}: {title}"),
+        byline=byline_html(fetched, version),
+        body=(
+            '<p><a class="back" href="index.html">← Back to the charts</a></p>\n'
+            f"<h2>{escape(heading)}</h2>\n{changes_html(change_lines)}"
+        ),
+    )
 
 
 def chart_page(  # noqa: PLR0913 - keyword-only options
@@ -76,13 +112,12 @@ def chart_page(  # noqa: PLR0913 - keyword-only options
         parts.append(f'<h2>{escape(heading)}</h2>\n<div class="fig">{div}</div>')
     return _SHELL.format(
         title=escape(title),
+        page_title=escape(title),
         byline=byline_html(fetched, version),
-        prev=escape(prev_label),
-        changes=changes_html(change_lines),
-        figures="\n".join(parts),
+        body="\n".join([changes_link_html(change_lines, prev_label), *parts]),
     )
 
 
-def write_chart_page(path: Path, html: str) -> Path:
+def write_page(path: Path, html: str) -> Path:
     write_text_atomic(path, html)
     return path

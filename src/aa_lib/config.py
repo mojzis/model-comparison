@@ -36,6 +36,10 @@ class Config:
     def chart_html(self) -> Path:
         return self.out_dir / "chart.html"
 
+    @property
+    def changes_html(self) -> Path:
+        return self.out_dir / "changes.html"
+
 
 def load_config(path: Path) -> Config:
     """Read `path`; relative paths resolve against its directory.
