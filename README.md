@@ -16,6 +16,7 @@ reasoning-effort levels. The source is a [marimo](https://marimo.io) notebook
 | `out/index.html` | The full notebook with outputs only (code hidden). This is the published page. |
 | `out/notebook.html` | The same page with the notebook code shown. |
 | `out/chart.html` | A lightweight shareable page: both figures, plotly.js from the CDN, no marimo runtime (~60 KB). |
+| `out/changes.html` | What changed since the previous snapshot. The other pages link to it instead of listing it inline. |
 | `data/raw/YYYY-MM-DD.json` | The raw API response for that day (all pages merged). |
 | `data/tidy/YYYY-MM-DD.parquet` | The tidy frame for that day (one row per model × effort). |
 
@@ -96,7 +97,7 @@ Press **Ctrl/Cmd+Shift+R** (run all) after it opens. The logic lives in
 | `parse.py` | Model name → family / effort |
 | `tidy.py` | Normalize, filter, Pareto frontier, persist, diff, schema guard |
 | `figures.py` | Both Plotly figures |
-| `page.py` | `chart.html` |
+| `page.py` | `chart.html`, `changes.html` |
 
 Vendors, family allowlist, colors and paths are in `config.toml`. To add Google,
 add a `[vendors.Google]` table with a palette and families.

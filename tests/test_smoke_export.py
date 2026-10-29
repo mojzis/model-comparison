@@ -35,7 +35,7 @@ def exported(tmp_path_factory: pytest.TempPathFactory) -> Path:
 
 
 def test_pages_exist_with_attribution(exported: Path) -> None:
-    for name in ("index.html", "notebook.html", "chart.html"):
+    for name in ("index.html", "notebook.html", "chart.html", "changes.html"):
         assert "Artificial Analysis" in (exported / "out" / name).read_text()
 
 

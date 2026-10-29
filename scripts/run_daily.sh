@@ -4,6 +4,7 @@
 #   out/index.html     outputs only (published page)
 #   out/notebook.html  same page with the notebook code
 #   out/chart.html     lightweight Plotly page, written by the notebook itself
+#   out/changes.html   full change list since the previous snapshot, likewise
 #   data/raw, data/tidy  dated snapshots, written by the notebook itself
 #
 # `marimo export html` exits 1 when any cell raises (API error, schema guard) but
@@ -49,4 +50,4 @@ run_export notebook.html --include-code
 
 mv -f "$tmp/index.html" "$out_dir/index.html"
 mv -f "$tmp/notebook.html" "$out_dir/notebook.html"
-echo "aa-chart: published $out_dir/index.html, $out_dir/notebook.html, $out_dir/chart.html"
+echo "aa-chart: published $out_dir/index.html, $out_dir/notebook.html, $out_dir/chart.html, $out_dir/changes.html"

@@ -16,7 +16,13 @@ def _():
     from aa_lib.config import load_config
     from aa_lib.fetch import load_or_fetch
     from aa_lib.figures import ladder_figure, main_figure
-    from aa_lib.page import byline_html, changes_html, chart_page, write_chart_page
+    from aa_lib.page import (
+        byline_html,
+        changes_link_html,
+        changes_page,
+        chart_page,
+        write_page,
+    )
     from aa_lib.tidy import (
         allowlist_warnings,
         change_lines,
@@ -34,8 +40,9 @@ def _():
         allowlist_warnings,
         byline_html,
         change_lines,
+        changes_link_html,
+        changes_page,
         chart_page,
-        changes_html,
         check_schema,
         datetime,
         diff_snapshots,
@@ -50,7 +57,7 @@ def _():
         os,
         pl,
         select_current,
-        write_chart_page,
+        write_page,
         write_tidy,
     )
 
@@ -131,20 +138,35 @@ def _(
     cfg,
     change_lines,
     changes,
-    changes_html,
+    changes_link_html,
     fetched,
     index_version,
     mo,
     prev_label,
 ):
-    # 8. Header.
+    # 8. Header. The change list itself lives on changes.html (next cell).
     lines = change_lines(changes)
     mo.Html(
         f"<h1>{cfg.title}</h1>"
         f"<p>{byline_html(fetched, index_version)}</p>"
-        f"<h3>What changed since {prev_label}</h3>{changes_html(lines)}"
+        f"{changes_link_html(lines, prev_label)}"
     )
     return (lines,)
+
+
+@app.cell
+def _(cfg, changes_page, fetched, index_version, lines, prev_label, write_page):
+    # 8b. Change list page (out/changes.html), written atomically.
+    _ = write_page(
+        cfg.changes_html,
+        changes_page(
+            cfg.title,
+            fetched=fetched,
+            version=index_version,
+            change_lines=lines,
+            prev_label=prev_label,
+        ),
+    )
 
 
 @app.cell
@@ -186,10 +208,10 @@ def _(
     main_fig,
     mo,
     prev_label,
-    write_chart_page,
+    write_page,
 ):
     # 12. Lightweight shareable page (out/chart.html), written atomically.
-    _path = write_chart_page(
+    _path = write_page(
         cfg.chart_html,
         chart_page(
             cfg.title,
