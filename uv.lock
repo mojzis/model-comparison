@@ -49,7 +49,7 @@ name = "cffi"
 version = "2.1.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "pycparser" },
+    { name = "pycparser", marker = "implementation_name != 'PyPy'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/9e/ef/008a1939e372c06329a3fce4279c02f328488f3526744906eeec3da7ad5f/cffi-2.1.1.tar.gz", hash = "sha256:dd31f52ea1086513bb9df30f8fcee9b8918323ae067a3d5b78bc826a000712be", size = 530807, upload-time = "2026-08-03T21:21:18.939Z" }
 wheels = [
@@ -280,16 +280,16 @@ wheels = [
 
 [[package]]
 name = "gerenuk"
-version = "0.5.1"
+version = "0.5.5"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "ty-find" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/ac/1c/ee51f633f65dcaa0bf66eadc0fb22acaa54018239207447a3d7952938a54/gerenuk-0.5.1.tar.gz", hash = "sha256:43b5416a2cc48d34d9158c47ef6df804e5e9dfad44e28b729c40feb85e36de9c", size = 1105117, upload-time = "2026-10-28T17:36:36.418Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/4c/0c/808fa5b1469711b6e647978caf72a34fcf751ef937be29f906842c7db285/gerenuk-0.5.5.tar.gz", hash = "sha256:f450cbd4721b91f991c94278ab0f1b682098b0bb56a6a73a1ca0e55a393e18f3", size = 1118027, upload-time = "2026-11-11T17:16:53.718Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/83/b8/c22258d3c3bf8e976fc23b29824b78dd2c27ee7898de70fde632d88ab743/gerenuk-0.5.1-py3-none-macosx_11_0_arm64.whl", hash = "sha256:6cc139f330507b6d95142a4d39ee87ee01d59d522a1a0dcd675d52788c8cca18", size = 1188353, upload-time = "2026-10-28T17:36:31.852Z" },
-    { url = "https://files.pythonhosted.org/packages/56/87/fc9397c2210d4cd8deca1992c20243940fb678013d359352bac8794aa90c/gerenuk-0.5.1-py3-none-manylinux_2_28_x86_64.whl", hash = "sha256:91635642daf50492f4b582771bae00b64be347b92c96ba490e0ae45026bf6dec", size = 1358838, upload-time = "2026-10-28T17:36:33.481Z" },
-    { url = "https://files.pythonhosted.org/packages/ce/df/7d5e3475be83b83589a575ca3cd14cfeaf83ed7f598b770f2b1e0f89e1be/gerenuk-0.5.1-py3-none-win_amd64.whl", hash = "sha256:9cebbdff81105177f13df981b8a4ff019d11e35c8ed0ec94853e4cab79bea0a5", size = 1262670, upload-time = "2026-10-28T17:36:34.953Z" },
+    { url = "https://files.pythonhosted.org/packages/81/be/2be37ee924e21f3df4cf5cff8b7db886d1a3f7da0057f6d74ad66f6e223f/gerenuk-0.5.5-py3-none-macosx_11_0_arm64.whl", hash = "sha256:e9dca49e32962700d2a4a1240068ebc9d89b55536e87bd1296ff3de0639418e1", size = 1200728, upload-time = "2026-11-11T17:16:48.894Z" },
+    { url = "https://files.pythonhosted.org/packages/e8/a5/f90b0e49db1c04b1c2258e3cff4a8dce22dd9ab185e94150299a7e8a88d8/gerenuk-0.5.5-py3-none-manylinux_2_28_x86_64.whl", hash = "sha256:f7a7e90e3c7badd212bec0ff139456afd3503a2efc224fbc1c184ff73416e30d", size = 1374713, upload-time = "2026-11-11T17:16:50.559Z" },
+    { url = "https://files.pythonhosted.org/packages/df/7d/b0ed1d21fcc79361dae09e30488f34b68f06a58639db6dac4ea5c1321521/gerenuk-0.5.5-py3-none-win_amd64.whl", hash = "sha256:598cfbc98b831aab63d007de11aa0df5ab7582771b71ae07d5698d9ea439fd87", size = 1281017, upload-time = "2026-11-11T17:16:51.999Z" },
 ]
 
 [[package]]
@@ -446,13 +446,13 @@ wheels = [
 
 [[package]]
 name = "madoqua"
-version = "0.2.7"
+version = "0.2.8"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/99/24/75adcea8a376a66fbfdbd955d9c73e927810185a91e5f110a0d7c4f2ecdb/madoqua-0.2.7.tar.gz", hash = "sha256:7e17d53ef32be3bff5b37b964a6f01bba38d4ba79d17355e323d9a537d8b865b", size = 904236, upload-time = "2026-10-28T17:39:16.991Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/62/98/5d82c0802e6b43c1fbd9c9e430f1b2eb7b4fcbdbfe329b58002dbc3d01b5/madoqua-0.2.8.tar.gz", hash = "sha256:9686c932d00761261cfae0aab0a34720c51ed86d09f1ab2e8590e77ee8941958", size = 915269, upload-time = "2026-10-28T20:19:43.198Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/1f/c5/90f4cd34793568915f4689fad81fcc8b87c2d0d7dd2fac57b764887b2c63/madoqua-0.2.7-py3-none-macosx_11_0_arm64.whl", hash = "sha256:a5366e7259876e1419cbb0ece20cb4dc3fba189089c6611120de9f521e772950", size = 764645, upload-time = "2026-10-28T17:39:11.744Z" },
-    { url = "https://files.pythonhosted.org/packages/74/0d/9512204872405c3f8db93b740a480862f087e074305b76fd653432220d4b/madoqua-0.2.7-py3-none-manylinux_2_28_x86_64.whl", hash = "sha256:228ea08d24438ec2f237690632e01e431e51adb88d344f511c19c901cd606044", size = 881313, upload-time = "2026-10-28T17:39:13.606Z" },
-    { url = "https://files.pythonhosted.org/packages/43/3a/9595ffd48532b0081c0ae660d8a89f95bd31aa041f7153689bf7aaed9a60/madoqua-0.2.7-py3-none-win_amd64.whl", hash = "sha256:1424b1a8062340ddb8a4b3e1b5db50f933cadef11764dabdf51a9fb584e4c02a", size = 787616, upload-time = "2026-10-28T17:39:15.193Z" },
+    { url = "https://files.pythonhosted.org/packages/40/d4/079474506f0afede430673b34a8946584cef888ce8fa5aadd7c1d129ee3f/madoqua-0.2.8-py3-none-macosx_11_0_arm64.whl", hash = "sha256:e855024b9dd9f99f06b23238628d8b9f47745cada4541f6a7d0eba8255a4b8af", size = 775524, upload-time = "2026-10-28T20:19:37.952Z" },
+    { url = "https://files.pythonhosted.org/packages/a1/69/95a90c95c1ff630629aba26909cd7cbb5bdd97db1be1b3f521a29f472167/madoqua-0.2.8-py3-none-manylinux_2_28_x86_64.whl", hash = "sha256:8c64aa959b713b5a7d5a71a5c3e272a3aaf5ed4d6d2633f11c8c1850ebb27961", size = 893613, upload-time = "2026-10-28T20:19:40.142Z" },
+    { url = "https://files.pythonhosted.org/packages/41/22/e9ae202b7689ca91c29e373fea77b4d59ff6d760c328b8bc3036c96918fe/madoqua-0.2.8-py3-none-win_amd64.whl", hash = "sha256:b8a7437bcce5a139de49ac814ef2739564a909bf53d12fa8141d6ba8a19c66ee", size = 801879, upload-time = "2026-10-28T20:19:41.659Z" },
 ]
 
 [[package]]
@@ -756,13 +756,13 @@ wheels = [
 
 [[package]]
 name = "pycoati"
-version = "0.2.11"
+version = "0.2.12"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/b2/48/b502cf6a6c5646cd748b855226380525744b917f1da440cd04d8b2be14f5/pycoati-0.2.11.tar.gz", hash = "sha256:04230bdad039c7d014d5faa05da278a90351837fe56c956ccfd1b4321387e424", size = 195579, upload-time = "2026-10-28T17:39:22.587Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/42/40/21c0c341e25f49c7f8dd46c01e689c8789e0c2ee24577a43427d6c122e49/pycoati-0.2.12.tar.gz", hash = "sha256:3d5d19e1b2f123680269543279c64a39dcaaa14250e1739323d579cf80030ce4", size = 198238, upload-time = "2026-10-30T13:21:57.371Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/c4/dd/9d15e4b8f03f32717c382841121baf4ab1d4320d98733fa565cd06608f7c/pycoati-0.2.11-py3-none-macosx_11_0_arm64.whl", hash = "sha256:2a1ce6f1ee22a214b7bc47062415c500e79c35cdb69a5febba3582301256d31b", size = 1438926, upload-time = "2026-10-28T17:39:17.515Z" },
-    { url = "https://files.pythonhosted.org/packages/7d/a0/41fe3b8819fb3f41efff6e8e8c4bc22fe84c31ee86cd607c67ae145a2760/pycoati-0.2.11-py3-none-manylinux_2_28_x86_64.whl", hash = "sha256:78041550f9c3e64075ff3059b94f08c3cf76503ddc7e4f9c40e7874869b8d3ae", size = 1667188, upload-time = "2026-10-28T17:39:19.311Z" },
-    { url = "https://files.pythonhosted.org/packages/9c/28/e3a2b99479d43620e8c682ecaa3e7271c759910f38e786cbc42ae047257b/pycoati-0.2.11-py3-none-win_amd64.whl", hash = "sha256:6078365b2e34f430244ae1d3941a6beffe5639bebb02611c7d94f4d134e86d0e", size = 1536863, upload-time = "2026-10-28T17:39:21.027Z" },
+    { url = "https://files.pythonhosted.org/packages/39/e2/646a41562f2c9c2eb6c51a1b8d3e24224d07283f4f6813d581cd1e9bbe9a/pycoati-0.2.12-py3-none-macosx_11_0_arm64.whl", hash = "sha256:90a156944e6df1dd7cf53de284703260f82d4037c8a1ed41d7f73bd75597c0b6", size = 1441783, upload-time = "2026-10-30T13:21:51.851Z" },
+    { url = "https://files.pythonhosted.org/packages/fa/17/21296e2d1cc7cc32b26efc1c79f17acf645a88fb8d3b2a66e43bdce15276/pycoati-0.2.12-py3-none-manylinux_2_28_x86_64.whl", hash = "sha256:feed0e4784b3b6fe9930d1f3066c712745b83fdd728425db11b909db44cf08b0", size = 1669615, upload-time = "2026-10-30T13:21:53.884Z" },
+    { url = "https://files.pythonhosted.org/packages/ff/42/66539f1252bc504a6b10fd65b97deaad03bfd95bcbec7ed1f724d10826c2/pycoati-0.2.12-py3-none-win_amd64.whl", hash = "sha256:98b6c680e115dc92206f2d8ac01039b33759a9614cf084be4eee9e93b9e925dd", size = 1536885, upload-time = "2026-10-30T13:21:55.6Z" },
 ]
 
 [[package]]
